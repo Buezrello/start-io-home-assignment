@@ -1,0 +1,17 @@
+application:
+  rest-connection-timeout-sec: 10
+  rest-read-timeout-sec: 10
+server:
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
+spring:
+  application:
+    name: exam
+  redis:
+    database: ${REDIS_DATABASE:1}
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:1234}
+    timeout: 6000
