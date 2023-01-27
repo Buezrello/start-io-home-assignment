@@ -15,4 +15,4 @@ You can run a request with peageable parameters
 
 localhost:8080/listings?min_price=0.0081&max_price=0.15&min_min_cpm=1&max_min_cpm=2&page=10&size=2
 
-In future version I will implement an asyncrony request to database.
+In future version I will implement an asyncrony request to database. And will add unit tests.
