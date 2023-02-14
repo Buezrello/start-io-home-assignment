@@ -11,20 +11,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @RequiredArgsConstructor
 public class ListingController {
 
     private final ListingService listingService;
+    private static final float FLOAT_MAX_VALUE = Float.MAX_VALUE;
 
     @GetMapping("/listings")
     public ResponseEntity<Page<ListingDetails>> getListingDetails(Pageable pageable,
-                                                                  @RequestParam(value = "min_price") Float minPrice,
-                                                                  @RequestParam(value = "max_price") Float maxPrice,
-                                                                  @RequestParam(value = "min_min_cpm") Float minMinCpm,
-                                                                  @RequestParam(value = "max_min_cpm") Float maxMinCpm) {
+                                                                  @RequestParam(value = "min_price", defaultValue = "0") Float minPrice,
+                                                                  @RequestParam(value = "max_price", defaultValue = FLOAT_MAX_VALUE + "") Float maxPrice,
+                                                                  @RequestParam(value = "min_min_cpm", defaultValue = "0") Float minMinCpm,
+                                                                  @RequestParam(value = "max_min_cpm", defaultValue = FLOAT_MAX_VALUE + "") Float maxMinCpm) {
         return new ResponseEntity<>(listingService.getListingDetails(pageable, minPrice, maxPrice, minMinCpm, maxMinCpm), HttpStatus.OK);
     }
 }
